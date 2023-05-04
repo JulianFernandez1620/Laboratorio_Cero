@@ -17,7 +17,7 @@ export const Users = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!editing) {
-      const res = await fetch(`${API}/users`, {
+      const res = await fetch(`${API}/users`,{ mode: 'no-cors' }, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const Users = () => {
       });
       await res.json();
     } else {
-      const res = await fetch(`${API}/users/${id}`, {
+      const res = await fetch(`${API}/user/${id}` ,{ mode: 'no-cors' }, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

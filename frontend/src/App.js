@@ -7,7 +7,7 @@ import {Navbar} from './elements/Navbar'
 function App() {
   return (
     <Router>
-      <Navbar className="container p-4"/>
+      <Navbar/>
       <div className="container p-1">
         <Routes>
           <Route path="/" element={<Users/>}/>
