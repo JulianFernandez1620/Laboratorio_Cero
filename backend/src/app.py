@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo, ObjectId
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://localhost/labcruddb'
@@ -11,6 +11,7 @@ CORS(app)
 db = mongo.db.users
 
 @app.route('/users', methods=['POST'])
+@cross_origin(origin='http://localhost:3000')
 def createUser():
     id = db.insert_one({
         'name': request.json['name'], 
