@@ -7,11 +7,12 @@ app.config['MONGO_URI'] = 'mongodb://localhost/labcruddb'
 #conexion con la base de datos
 mongo = PyMongo(app)
 CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, supports_credentials=True)
 #referencia a la coleccion de usuarios
 db = mongo.db.users
 
 @app.route('/users', methods=['POST'])
-@cross_origin(origin='http://localhost:3000')
 def createUser():
     id = db.insert_one({
         'name': request.json['name'], 
